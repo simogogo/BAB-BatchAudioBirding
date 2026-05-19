@@ -1,9 +1,9 @@
 ﻿{
-  "version": "1.0.0",
-  "build_number": 1,
-  "url": "https://raw.githubusercontent.com/simogogo/BatchAudioBirding/main/release/batch_audio_birding_v1.0.0.apk",
+  "version": "1.0.1",
+  "build_number": 2,
+  "url": "https://raw.githubusercontent.com/simogogo/BatchAudioBirding/main/release/batch_audio_birding_v1.0.1.apk",
   "changelog": {
-    "it": "- Release v1.0.0.",
-    "en": "- Firsl release v1.0.0."
+    "it": "- Nuova versione v1.0.1 con ottimizzazioni delle prestazioni.",
+    "en": "- New version v1.0.1 with performance optimizations."
   }
 }
