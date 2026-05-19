@@ -1,0 +1,4 @@
+enum SpectrogramColorTheme {
+  grayscale,
+  colored,
+}

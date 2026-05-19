@@ -1,0 +1,311 @@
+{
+  "@@locale": "en",
+
+  "appName": "Batch Audio Birding",
+  "@appName": { "description": "Application name" },
+
+  "splashDownloadingModel": "Downloading AI model...",
+  "@splashDownloadingModel": { "description": "Splash: downloading model" },
+
+  "splashModelReady": "Model ready",
+  "@splashModelReady": {},
+
+  "splashDownloadError": "Download error. Check your connection.",
+  "@splashDownloadError": {},
+
+  "splashRetry": "Retry",
+  "@splashRetry": {},
+
+  "splashDownloadProgress": "{percent}% — {speed}",
+  "@splashDownloadProgress": {
+    "placeholders": {
+      "percent": { "type": "String" },
+      "speed": { "type": "String" }
+    }
+  },
+
+  "homeTitle": "Batch Audio Birding",
+  "@homeTitle": {},
+
+  "homeSelectFolder": "Select Audio Files",
+  "@homeSelectFolder": {},
+
+  "homeSelectFolderSubtitle": "Choose one or more audio files to analyze",
+  "@homeSelectFolderSubtitle": {},
+
+  "homeLastFolder": "Last selection: {path}",
+  "@homeLastFolder": {
+    "placeholders": { "path": { "type": "String" } }
+  },
+
+  "homeNoLastFolder": "No files selected",
+  "@homeNoLastFolder": {},
+
+  "homeFilesSelected": "{count} files selected",
+  "@homeFilesSelected": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "homeStartAnalysis": "Start Analysis",
+  "@homeStartAnalysis": {},
+
+  "homeSettings": "Settings",
+  "@homeSettings": {},
+
+  "homeFilterMode": "Filter mode",
+  "@homeFilterMode": {},
+
+  "homeThreshold": "Confidence threshold",
+  "@homeThreshold": {},
+
+  "analysisTitle": "Analysis",
+  "@analysisTitle": {},
+
+  "analysisProgress": "{done} / {total} files",
+  "@analysisProgress": {
+    "placeholders": {
+      "done": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+
+  "analysisDetections": "{count} detections",
+  "@analysisDetections": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "analysisStop": "Stop",
+  "@analysisStop": {},
+
+  "analysisExportCsv": "Export CSV",
+  "@analysisExportCsv": {},
+
+  "analysisStatusWaiting": "Waiting...",
+  "@analysisStatusWaiting": {},
+
+  "analysisStatusProcessing": "Analyzing...",
+  "@analysisStatusProcessing": {},
+
+  "analysisStatusDone": "Done — {count} detections",
+  "@analysisStatusDone": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "analysisStatusError": "Error: {message}",
+  "@analysisStatusError": {
+    "placeholders": { "message": { "type": "String" } }
+  },
+
+  "analysisComplete": "Analysis complete",
+  "@analysisComplete": {},
+
+  "analysisTotalAudio": "{hours}h {min}m of audio",
+  "@analysisTotalAudio": {
+    "placeholders": {
+      "hours": { "type": "int" },
+      "min": { "type": "int" }
+    }
+  },
+
+  "analysisSpeciesFound": "{count} species detected",
+  "@analysisSpeciesFound": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "resultsTitle": "Results",
+  "@resultsTitle": {},
+
+  "resultsNoDetections": "No detections found",
+  "@resultsNoDetections": {},
+
+  "resultsFilterThreshold": "Minimum confidence",
+  "@resultsFilterThreshold": {},
+
+  "resultsExportFile": "Export this file",
+  "@resultsExportFile": {},
+
+  "resultsTimeRange": "{start} — {end}",
+  "@resultsTimeRange": {
+    "placeholders": {
+      "start": { "type": "String" },
+      "end": { "type": "String" }
+    }
+  },
+
+  "settingsTitle": "Settings",
+  "@settingsTitle": {},
+
+  "settingsThreshold": "Confidence threshold",
+  "@settingsThreshold": {},
+
+  "settingsThresholdHelp": "Minimum confidence to show a detection (0.1 = 10%)",
+  "@settingsThresholdHelp": {},
+
+  "settingsOverlap": "Segment overlap (seconds)",
+  "@settingsOverlap": {},
+
+  "settingsOverlapHelp": "Overlap between 3-second audio windows (0–2.9s)",
+  "@settingsOverlapHelp": {},
+
+  "settingsFilterMode": "Species filter",
+  "@settingsFilterMode": {},
+
+  "settingsFilterNone": "No filter",
+  "@settingsFilterNone": {},
+
+  "settingsFilterGeo": "Geographic filter (GPS + week)",
+  "@settingsFilterGeo": {},
+
+  "settingsFilterList": "Custom species list",
+  "@settingsFilterList": {},
+
+  "settingsGeoLatitude": "Latitude",
+  "@settingsGeoLatitude": {},
+
+  "settingsGeoLongitude": "Longitude",
+  "@settingsGeoLongitude": {},
+
+  "settingsGeoWeek": "Week of year (1–48)",
+  "@settingsGeoWeek": {},
+
+  "settingsGeoUseGps": "Use device GPS",
+  "@settingsGeoUseGps": {},
+
+  "settingsSpeciesListPick": "Select species list file",
+  "@settingsSpeciesListPick": {},
+
+  "settingsSpeciesListNone": "No file selected",
+  "@settingsSpeciesListNone": {},
+
+  "settingsSpeciesListSelected": "{count} species loaded",
+  "@settingsSpeciesListSelected": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+
+  "settingsLanguage": "Language",
+  "@settingsLanguage": {},
+
+  "settingsSave": "Save",
+  "@settingsSave": {},
+
+  "errorPermissionStorage": "Storage permission required to read audio files",
+  "@errorPermissionStorage": {},
+
+  "errorPermissionLocation": "Location permission required for geographic filter",
+  "@errorPermissionLocation": {},
+
+  "errorUnsupportedFormat": "Unsupported audio format",
+  "@errorUnsupportedFormat": {},
+
+  "errorNoFiles": "No audio files found in the selected folder",
+  "@errorNoFiles": {},
+
+  "errorModelNotFound": "AI model not found. Please restart the app.",
+  "@errorModelNotFound": {},
+
+  "csvExportSuccess": "CSV exported successfully",
+  "@csvExportSuccess": {},
+
+  "csvExportError": "Error exporting CSV",
+  "@csvExportError": {},
+
+  "commonCancel": "Cancel",
+  "@commonCancel": {},
+
+  "commonOk": "OK",
+  "@commonOk": {},
+
+  "commonClose": "Close",
+  "@commonClose": {},
+
+  "preparingFiles": "Preparing files...",
+  "preparingFilesProgress": "Processing file {current} of {total}",
+  "@preparingFilesProgress": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+
+  "homeViewSelectedFiles": "View selected files",
+  "selectedFilesTitle": "Selected Files",
+  "selectedFilesRemove": "Remove",
+
+  "detailModalTitle": "Detection Detail",
+  "detailExportAudio": "Export Audio",
+  "detailExportSpectrogram": "Export Spectrogram",
+  "detailLoopAudio": "Loop",
+  "detailSpectrogramLoading": "Generating spectrogram...",
+  "detailSpectrogramFullscreen": "Tap to expand",
+  "audioExportSuccess": "Audio exported successfully to device",
+  "audioExportError": "Error exporting audio",
+  "spectrogramExportSuccess": "Spectrogram exported successfully to device",
+  "spectrogramExportError": "Error exporting spectrogram",
+  "settingsSensitivity": "AI Model Sensitivity",
+  "settingsSensitivityHelp": "Adjusts model sensitivity (0.5 = conservative, 1.5 = highly sensitive, default 1.0)",
+  "settingsLocationThreshold": "Geographic Filter Threshold",
+  "settingsLocationThresholdHelp": "Minimum geographic probability threshold to include a species (default 0.03 = 3%)",
+  "settingsGeoPreviewAllowedSpecies": "Preview Probable Species",
+  "previewAllowedSpeciesTitle": "Probable Species",
+  "previewAllowedSpeciesSearch": "Search species...",
+  "previewAllowedSpeciesLoading": "Loading probable species...",
+  "previewAllowedSpeciesEmpty": "No species meet the filter criteria",
+  "settingsSpectrogramTheme": "Spectrogram color scheme",
+  "settingsSpectrogramThemeHelp": "Select the color palette for the generated spectrograms",
+  "settingsSpectrogramThemeGrayscale": "Grayscale",
+  "settingsSpectrogramThemeColored": "Colored",
+  "settingsSpeciesListsManage": "Manage Species Lists",
+  "customListsTitle": "Custom Species Lists",
+  "customListsCreate": "Create List",
+  "customListsImport": "Import from File",
+  "customListsEdit": "Edit Species List",
+  "customListsDelete": "Delete List",
+  "customListsNameLabel": "List Name",
+  "customListsNameError": "List name cannot be empty",
+  "customListsDeleteConfirm": "Are you sure you want to delete this list?",
+  "customListsAddSpecies": "Add/Remove Species",
+  "customListsSearchPlaceholder": "Search species by name...",
+  "customListsNoLists": "No custom species lists created yet.",
+  "customListsActive": "Active Filter",
+  "customListsUseAsFilter": "Use as Filter",
+  "customListsImportSuccess": "Imported successfully with {count} species!",
+  "@customListsImportSuccess": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "customListsImportHint": "Select a text file (.txt) containing one species per line.",
+  "customListsOnlySelected": "Selected species",
+  "customListsExport": "Export List",
+  "customListsExportSuccess": "List exported successfully!",
+  "customListsExportError": "Error exporting species list",
+  "customListsExportEmptyError": "Cannot export an empty species list",
+  "onboardingSkip": "Skip",
+  "onboardingNext": "Next",
+  "onboardingStart": "Get Started",
+  "onboardingTitle1": "Welcome",
+  "onboardingDesc1": "Analyze batch audio recordings to automatically detect and identify bird species present in your soundscapes.",
+  "onboardingTitle2": "AI Audio Analysis",
+  "onboardingDesc2": "Powered by BirdNET AI, visualize detailed spectrograms and listen to detections dynamically synced with the audio.",
+  "onboardingTitle3": "Smart Filtering",
+  "onboardingDesc3": "Reduce false positives using GPS-based geographic filters or create custom species lists tailored to your needs.",
+  "onboardingTitle4": "Ready to Explore",
+  "onboardingDesc4": "Select a folder containing your audio recordings and start your first acoustic batch analysis now!",
+  "settingsThemeMode": "App Theme",
+  "settingsThemeSystem": "System",
+  "settingsThemeLight": "Light",
+  "settingsThemeDark": "Dark",
+  "settingsThemeModeHelp": "Choose between a clean light theme, dark mode, or follow your system settings.",
+  "settingsUpdateSectionTitle": "Application Updates",
+  "settingsUpdateCurrentVersion": "Current Version",
+  "settingsUpdateUrlLabel": "Update Check Server URL (JSON)",
+  "settingsUpdateCheckButton": "Check for Updates",
+  "settingsUpdateTitle": "New Version Available!",
+  "settingsUpdateChangelogHeader": "Release Notes:",
+  "settingsUpdateLater": "Later",
+  "settingsUpdateNow": "Update Now",
+  "settingsUpdateLatestTitle": "Up to Date!",
+  "settingsUpdateLatestDesc": "You are already running the latest version of the application.",
+  "settingsUpdateError": "Failed to check for updates",
+  "settingsUpdateNoChangelog": "No release notes provided."
+}
