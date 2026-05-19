@@ -444,11 +444,17 @@ class _DetectionDetailModalState extends ConsumerState<DetectionDetailModal> {
         color: modalBgColor,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      padding: const EdgeInsets.only(top: 12, bottom: 24, left: 20, right: 20),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
+      padding: EdgeInsets.only(
+        top: 12,
+        bottom: 24 + MediaQuery.paddingOf(context).bottom,
+        left: 20,
+        right: 20,
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
           // Handle
           Center(
             child: Container(
@@ -731,7 +737,13 @@ class _DetectionDetailModalState extends ConsumerState<DetectionDetailModal> {
               Expanded(
                 child: OutlinedButton.icon(
                   icon: const Icon(Icons.audio_file_rounded),
-                  label: Text(l10n.detailExportAudio),
+                  label: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      l10n.detailExportAudio,
+                      maxLines: 1,
+                    ),
+                  ),
                   onPressed: _isLoading ? null : _exportAudio,
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 12),
@@ -744,7 +756,13 @@ class _DetectionDetailModalState extends ConsumerState<DetectionDetailModal> {
               Expanded(
                 child: OutlinedButton.icon(
                   icon: const Icon(Icons.image_rounded),
-                  label: Text(l10n.detailExportSpectrogram),
+                  label: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      l10n.detailExportSpectrogram,
+                      maxLines: 1,
+                    ),
+                  ),
                   onPressed: _isLoading ? null : _exportSpectrogram,
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 12),
@@ -757,6 +775,7 @@ class _DetectionDetailModalState extends ConsumerState<DetectionDetailModal> {
           ),
         ],
       ),
+     ),
     );
   }
 

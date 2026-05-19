@@ -100,18 +100,60 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           segments: [
                             ButtonSegment<String>(
                               value: 'system',
-                              icon: const Icon(Icons.settings_suggest_rounded),
-                              label: Text(l10n.settingsThemeSystem),
+                              label: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 4),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const Icon(Icons.settings_suggest_rounded),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      l10n.settingsThemeSystem,
+                                      style: const TextStyle(fontSize: 12),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                             ButtonSegment<String>(
                               value: 'light',
-                              icon: const Icon(Icons.light_mode_rounded, color: Colors.orange),
-                              label: Text(l10n.settingsThemeLight),
+                              label: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 4),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const Icon(Icons.light_mode_rounded, color: Colors.orange),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      l10n.settingsThemeLight,
+                                      style: const TextStyle(fontSize: 12),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                             ButtonSegment<String>(
                               value: 'dark',
-                              icon: const Icon(Icons.dark_mode_rounded, color: Color(0xFF4CAF50)),
-                              label: Text(l10n.settingsThemeDark),
+                              label: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 4),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const Icon(Icons.dark_mode_rounded, color: Color(0xFF4CAF50)),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      l10n.settingsThemeDark,
+                                      style: const TextStyle(fontSize: 12),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ],
                           selected: {settings.themeMode},
@@ -433,7 +475,75 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       }
     }
 
-    final pos = await Geolocator.getCurrentPosition();
+    if (permission == LocationPermission.deniedForever) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(l10n.errorPermissionLocation),
+            action: SnackBarAction(
+              label: 'Impostazioni',
+              onPressed: () => Geolocator.openAppSettings(),
+            ),
+          ),
+        );
+      }
+      return;
+    }
+
+    // Show a loading indicator SnackBar to give user visual feedback during the GPS lock
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Row(
+            children: [
+              SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
+              ),
+              SizedBox(width: 16),
+              Text('Ricerca posizione GPS...'),
+            ],
+          ),
+          duration: Duration(seconds: 4),
+        ),
+      );
+    }
+
+    Position? pos;
+    try {
+      pos = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+        timeLimit: const Duration(seconds: 5),
+      );
+    } catch (_) {
+      try {
+        pos = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high,
+          forceAndroidLocationManager: true,
+          timeLimit: const Duration(seconds: 5),
+        );
+      } catch (_) {
+        pos = await Geolocator.getLastKnownPosition();
+      }
+    }
+
+    // Dismiss the loading snackbar
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).clearSnackBars();
+    }
+
+    if (pos == null) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Impossibile rilevare la posizione GPS. Controlla che la localizzazione sia attiva o inserisci le coordinate manualmente.'),
+          ),
+        );
+      }
+      return;
+    }
+
     final now = DateTime.now();
     final week = ((now.difference(DateTime(now.year, 1, 1)).inDays) / 7)
             .round()
@@ -650,21 +760,22 @@ class _FilterModeSelector extends StatelessWidget {
                           ],
                         ),
                       ),
-                      ElevatedButton.icon(
-                        onPressed: onManageSpeciesLists,
-                        icon: const Icon(Icons.edit_note_rounded, size: 18),
-                        label: Text(l10n.settingsSpeciesListsManage),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: orangeColor.withOpacity(0.15),
-                          foregroundColor: orangeColor,
-                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          elevation: 0,
-                        ),
-                      ),
                     ],
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton.icon(
+                    onPressed: onManageSpeciesLists,
+                    icon: const Icon(Icons.edit_note_rounded, size: 18),
+                    label: Text(l10n.settingsSpeciesListsManage),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: orangeColor.withOpacity(0.15),
+                      foregroundColor: orangeColor,
+                      minimumSize: const Size.fromHeight(44),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      elevation: 0,
+                    ),
                   ),
                 ],
               ),

@@ -650,29 +650,34 @@ class _CustomSpeciesListsScreenState extends ConsumerState<CustomSpeciesListsScr
                       const SizedBox(height: 12),
                       const Divider(),
                       const SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton.icon(
-                            onPressed: () => _loadLabelsAndItems(list.id, list.name),
-                            icon: const Icon(Icons.edit_rounded, size: 16),
-                            label: Text(l10n.customListsAddSpecies),
-                            style: TextButton.styleFrom(
-                              foregroundColor: _orangeColor,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          if (!isActive)
-                            FilledButton.icon(
-                              onPressed: () => _handleSelectFilter(list),
-                              icon: const Icon(Icons.check_circle_outline_rounded, size: 16),
-                              label: Text(l10n.customListsUseAsFilter),
-                              style: FilledButton.styleFrom(
-                                backgroundColor: const Color(0xFF4CAF50),
-                                foregroundColor: Colors.black,
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          alignment: WrapAlignment.end,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            TextButton.icon(
+                              onPressed: () => _loadLabelsAndItems(list.id, list.name),
+                              icon: const Icon(Icons.edit_rounded, size: 16),
+                              label: Text(l10n.customListsAddSpecies),
+                              style: TextButton.styleFrom(
+                                foregroundColor: _orangeColor,
                               ),
                             ),
-                        ],
+                            if (!isActive)
+                              FilledButton.icon(
+                                onPressed: () => _handleSelectFilter(list),
+                                icon: const Icon(Icons.check_circle_outline_rounded, size: 16),
+                                label: Text(l10n.customListsUseAsFilter),
+                                style: FilledButton.styleFrom(
+                                  backgroundColor: const Color(0xFF4CAF50),
+                                  foregroundColor: Colors.black,
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -844,7 +849,10 @@ class _CustomSpeciesListsScreenState extends ConsumerState<CustomSpeciesListsScr
                           ),
                         )
                       : ListView.builder(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          padding: EdgeInsets.only(
+                            top: 8,
+                            bottom: 8 + MediaQuery.paddingOf(context).bottom,
+                          ),
                           itemCount: _filteredLabels.length,
                           itemBuilder: (context, index) {
                             final label = _filteredLabels[index];

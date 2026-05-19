@@ -534,95 +534,89 @@ class _DetectionTile extends StatelessWidget {
               ),
             )
           : null,
-      child: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Time indicator
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  detection.startFormatted,
-                  style: const TextStyle(
-                      fontSize: 11,
-                      color: Color(0xFF8B949E),
-                      fontFamily: 'monospace'),
-                ),
-                Container(
-                    width: 1, height: 12, color: const Color(0xFF30363D)),
-                Text(
-                  detection.endFormatted,
-                  style: const TextStyle(
-                      fontSize: 11,
-                      color: Color(0xFF8B949E),
-                      fontFamily: 'monospace'),
-                ),
-              ],
-            ),
-            const SizedBox(width: 12),
-            
-            // Species name
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      child: InkWell(
+        onTap: onSeek,
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Time indicator
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    detection.commonName,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: isPlaying ? color : null,
-                        ),
+                    detection.startFormatted,
+                    style: const TextStyle(
+                        fontSize: 11,
+                        color: Color(0xFF8B949E),
+                        fontFamily: 'monospace'),
                   ),
+                  Container(
+                      width: 1, height: 12, color: const Color(0xFF30363D)),
                   Text(
-                    detection.scientificName,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: const Color(0xFF8B949E),
-                          fontStyle: FontStyle.italic,
-                        ),
+                    detection.endFormatted,
+                    style: const TextStyle(
+                        fontSize: 11,
+                        color: Color(0xFF8B949E),
+                        fontFamily: 'monospace'),
                   ),
                 ],
               ),
-            ),
+              const SizedBox(width: 12),
+              
+              // Species name
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      detection.commonName,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: isPlaying ? color : null,
+                          ),
+                    ),
+                    Text(
+                      detection.scientificName,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: const Color(0xFF8B949E),
+                            fontStyle: FontStyle.italic,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
 
-            // Confidence badge
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: BoxDecoration(
-                color: color.withOpacity(0.12),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: color.withOpacity(0.4)),
+              // Confidence badge
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: color.withOpacity(0.4)),
+                ),
+                child: Text(
+                  detection.confidencePercent,
+                  style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: color),
+                ),
               ),
-              child: Text(
-                detection.confidencePercent,
-                style: TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                    color: color),
-              ),
-            ),
-            
-            const SizedBox(width: 8),
+              
+              const SizedBox(width: 8),
 
-            // Actions
-            IconButton(
-              icon: Icon(
-                isPlaying
-                    ? Icons.pause_circle_filled_rounded
-                    : Icons.play_circle_outline_rounded,
-                color: isPlaying ? color : const Color(0xFF4CAF50),
+              // Details Action (placed far right)
+              IconButton(
+                icon: const Icon(Icons.graphic_eq_rounded, color: Color(0xFF00BCD4)),
+                onPressed: onDetail,
+                tooltip: 'Details',
               ),
-              onPressed: onSeek,
-              tooltip: 'Play here',
-            ),
-            IconButton(
-              icon: const Icon(Icons.graphic_eq_rounded, color: Color(0xFF00BCD4)),
-              onPressed: onDetail,
-              tooltip: 'Details',
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
