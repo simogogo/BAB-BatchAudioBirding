@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -47,7 +48,15 @@ class UpdateService {
         throw Exception("Server returned status ${response.statusCode}");
       }
 
-      final data = response.data;
+      var data = response.data;
+      if (data is String) {
+        try {
+          data = jsonDecode(data);
+        } catch (_) {
+          throw Exception("Invalid JSON format in remote metadata");
+        }
+      }
+
       if (data is! Map<String, dynamic>) {
         throw Exception("Invalid update metadata format");
       }
