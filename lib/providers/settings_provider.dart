@@ -30,7 +30,7 @@ class AppSettings {
     this.hasSeenOnboarding = false,
     this.themeMode = 'system',
     this.updateUrl =
-        'https://raw.githubusercontent.com/simogogo/BatchAudioBirding/main/release/version.json',
+        'https://raw.githubusercontent.com/simogogo/BAB-BatchAudioBirding/main/release/version.json',
   });
 
   AppSettings copyWith({
@@ -90,7 +90,7 @@ class AppSettings {
         hasSeenOnboarding: json['hasSeenOnboarding'] as bool? ?? false,
         themeMode: json['themeMode'] as String? ?? 'system',
         updateUrl: json['updateUrl'] as String? ??
-            'https://raw.githubusercontent.com/simogogo/BatchAudioBirding/main/release/version.json',
+            'https://raw.githubusercontent.com/simogogo/BAB-BatchAudioBirding/main/release/version.json',
       );
 }
 
