@@ -29,7 +29,8 @@ class AppSettings {
     this.spectrogramTheme = SpectrogramColorTheme.colored,
     this.hasSeenOnboarding = false,
     this.themeMode = 'system',
-    this.updateUrl = 'https://raw.githubusercontent.com/stefan/BatchAudioBirding/main/release/version.json',
+    this.updateUrl =
+        'https://raw.githubusercontent.com/simogogo/BatchAudioBirding/main/release/version.json',
   });
 
   AppSettings copyWith({
@@ -88,7 +89,8 @@ class AppSettings {
             : SpectrogramColorTheme.colored,
         hasSeenOnboarding: json['hasSeenOnboarding'] as bool? ?? false,
         themeMode: json['themeMode'] as String? ?? 'system',
-        updateUrl: json['updateUrl'] as String? ?? 'https://raw.githubusercontent.com/stefan/BatchAudioBirding/main/release/version.json',
+        updateUrl: json['updateUrl'] as String? ??
+            'https://raw.githubusercontent.com/simogogo/BatchAudioBirding/main/release/version.json',
       );
 }
 
